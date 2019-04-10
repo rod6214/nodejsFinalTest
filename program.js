@@ -1,7 +1,13 @@
 var fs = require('fs');
-fs.readFile(process.argv[2], function (err, data) {
+
+//we have filter .md files
+
+fs.readdir(process.argv[2], (err, list)=>{
     if (err) throw err;
-    var str = data.toString();
-    var lines = str.split('\n');
-    console.log(lines.length - 1);
-  });
+
+    let mdFiles = list.filter((x)=> { return x.search('.md') >= 0 });
+
+    for(var mdFile of mdFiles){
+        console.log(mdFile);
+    }
+});
