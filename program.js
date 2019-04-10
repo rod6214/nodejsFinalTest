@@ -1,23 +1,11 @@
-//import { Directory } from "./myModule";
+var http = require('http');
 
-var dirExt = require('./mymodule');
-
-dirExt(process.argv[2], process.argv[3], (err, list)=>{
-    for(var file of list){
-        console.log(file);
-    }
+http.get(process.argv[2], function(res) {
+  res.setEncoding('utf8')
+  res.on('data', function(data){
+      console.log(data);
+  });
 });
 
-//var fs = require('fs');
 
-//we have filter .md files
-
-/* fs.readdir(process.argv[2], (err, list)=>{
-    if (err) throw err;
-
-    let mdFiles = list.filter((x)=> { return x.search('.md') >= 0 });
-
-    for(var mdFile of mdFiles){
-        console.log(mdFile);
-    }
-}); */
+//while(true);
