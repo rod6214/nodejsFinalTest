@@ -7,22 +7,16 @@ var validators = new pExt.Validators();
 
 var promise = new Promise(function (fulfill, reject) {
 
-    validators.PromiseValidator((isValid)=>{
-        if(isValid){
-            fulfill('I FIRED');
-            reject(new Error('I DID NOT FIRE'));
-        }
-        else{
-            reject(new Error('I DID NOT FIRE'));
-        }
-    });
+    fulfill('PROMISE VALUE');
 
-  }).then(onFulFill, onReject);
+}).then(onFulFill, onReject);
 
-  function onFulFill(message){
+function onFulFill(message){
     console.log(message);
-  }
+}
 
-  function onReject (error) {
+function onReject (error) {
     console.log(error.message);
-  }
+}
+
+console.log('MAIN PROGRAM');
