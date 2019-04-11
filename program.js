@@ -1,21 +1,10 @@
 
 
+var firstP = first();
 
-Promise.resolve('SECRET VALUE').then(onFulFill).catch(onCatch);
-Promise.reject(new Error('THERE IS AN ERROR!!!')).then(null, onReject);
+var secondP= firstP.then((val)=>{
+    return second(val);
+});
 
+secondP.then(console.log);
 
-
-
-function onFulFill(message){
-    console.log(message);
-    throw new Error('Ups!!!');
-}
-
-function onReject(error){
-    console.log(error.message);
-}
-
-function onCatch(error){
-    console.log(error.message);
-}
