@@ -1,22 +1,21 @@
 
-var pExt = require('./promiseExtensions');
-
-var validators = new pExt.Validators();
 
 
+Promise.resolve('SECRET VALUE').then(onFulFill).catch(onCatch);
+Promise.reject(new Error('THERE IS AN ERROR!!!')).then(null, onReject);
 
-var promise = new Promise(function (fulfill, reject) {
 
-    fulfill('PROMISE VALUE');
 
-}).then(onFulFill, onReject);
 
 function onFulFill(message){
     console.log(message);
+    throw new Error('Ups!!!');
 }
 
-function onReject (error) {
+function onReject(error){
     console.log(error.message);
 }
 
-console.log('MAIN PROGRAM');
+function onCatch(error){
+    console.log(error.message);
+}
