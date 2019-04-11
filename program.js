@@ -1,5 +1,7 @@
 
 
-setTimeout(()=>{
-    console.log('TIMED OUT!');
-}, 300);
+var promise = new Promise(function (fulfill, reject) {
+    // Your solution here
+    setTimeout(()=> {fulfill()}, 300);
+
+  }).then(()=>console.log('FULFILLED!'));
