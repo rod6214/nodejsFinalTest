@@ -1,13 +1,12 @@
-
+// 'use strict';
 function parsePromised(json){
     
     return new Promise((fulFill, reject)=>{
         
         try{
-            json = JSON.parse(process.argv[2]);
-            fulFill(json);
+            fulFill(JSON.parse(json));
         }catch(err){
-            reject(error);
+            reject(err);
         }
     });
 }
