@@ -1,28 +1,26 @@
-
-var http = require('./node_modules/q-io/http');
-
-var proSession = http.read('http://localhost:7000');
+var utils = require('./utils');
 
 
-var user = function(srv){
-    return new Promise((fulFill, reject)=>{
-        srv.then((id) => {
-            let proDb = http.read('http://localhost:7001/' + id);
-            proDb.then((user)=>{
-                fulFill(JSON.parse(user));
-            });
-        });
-    });
+/*
+params:
+    user: set github user
+*/ 
+
+utils.getGitJSON('matias8588').then((json) => {
+    
+    if(json.length <= 0){
+        console.log('No repositories');
+    }
+    else if(json.length < 4){
+        console.log('There are three repositories');
+    }
+    else{
+        console.log('There are a lot of repositories');
+    }
+
+}, onReject);
+
+function onReject(err){
+    console.log(err.message);
 }
-
-user(proSession).then(onFulFill);
-
-function onFulFill(data){
-    console.log(data);
-}
-
-
-
-
-
 
