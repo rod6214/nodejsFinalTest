@@ -6,7 +6,7 @@ params:
     user: set github user
 */ 
 
-utils.getGitJSON('matias8588').then((json) => {
+utils.getGitJSON('rod6214').then((json) => {
     
     if(json.length <= 0){
         console.log('No repositories');
