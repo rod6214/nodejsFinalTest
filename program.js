@@ -1,18 +1,27 @@
-// 'use strict';
-function parsePromised(json){
-    
-    return new Promise((fulFill, reject)=>{
-        
-        try{
-            fulFill(JSON.parse(json));
-        }catch(err){
-            reject(err);
-        }
-    });
+function alwaysThrows(){
+    throw new Error('OH NOES');
 }
+
+function iterate(arg){
+    console.log(arg);
+    return arg + 1;
+}
+
+var myPromise = Promise.resolve(1);
 
 function onReject(error){
     console.log(error.message);
 }
 
-parsePromised(process.argv[2]).then(null, onReject);
+myPromise
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(alwaysThrows)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(iterate).catch(onReject);
+
